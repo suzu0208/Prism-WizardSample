@@ -1,0 +1,23 @@
+﻿<Window x:Class="WizardSample.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="480" Width="640" MinHeight="480" MinWidth="640">
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- ページ部 -->
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Command="{Binding PrevCommand}" IsEnabled="{Binding CanPrevButton.Value}" Margin="4" Width="40">Prev</Button>
+            <Button Command="{Binding NextCommand}" IsEnabled="{Binding CanNextButton.Value}" Margin="4" Width="40">Next</Button>
+            <Button Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"  IsEnabled="{Binding CanCloseButton.Value}"  Margin="4" Width="40">Close</Button>
+        </StackPanel>
+    </Grid>
+</Window>
